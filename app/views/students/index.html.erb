@@ -1,0 +1,19 @@
+<h1>All Students</h1>
+
+<% if @students.present? %>
+  <table class="table">
+    <thead>
+      <tr class="justify-content-between d-flex">
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @students %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No students found.</p>
+<% end %>
+
+<%= link_to 'Create New Student', new_student_path, class: 'btn btn-secondary ms-2' %>
