@@ -1,0 +1,24 @@
+<div data-controller="lane">
+  <%= form_with(model: @race, local: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control', required: true, aria: { describedby: 'race_info' } %>
+      <div id="race_info" class="form-text">Give the name for the race.</div>
+    </div>
+
+    <div id="students_checkboxes">
+      <%= render 'races/students', students: @students%>
+    </div>
+
+    <div id="lanes_fields">
+      <%= render 'races/lane_form', form:, selected_students: []%>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <%= button_tag 'Assigne Lanes', class: 'btn btn-primary', id: 'assinge_lane_button', 'data-action':"click->lane#show_lanes" %>
+      <%= form.submit 'Submit', class: 'btn btn-primary d-none', id: 'race_create_button' %>
+      <button onclick="history.back()" class="btn btn-primary">Go Back</button>
+    </div>
+
+  <% end %>
+</div>

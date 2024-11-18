@@ -56,4 +56,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem 'pg'
+gem "pg"
+gem 'requestjs-rails'

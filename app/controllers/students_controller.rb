@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to students_path, notice: "Student created successfully"
     else
-      flash.now[:error] = @student.errors.full_messages.join('</br>')
+      flash.now[:error] = @student.errors.full_messages.join("</br>")
       render turbo_stream: turbo_stream.update(:flash, partial: "/flash_message")
     end
   end
@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
     if @student.update(student_params)
       redirect_to students_path, notice: "Student updated successfully"
     else
-      flash.now[:error] = @student.errors.full_messages.join('</br>')
+      flash.now[:error] = @student.errors.full_messages.join("</br>")
       render turbo_stream: turbo_stream.update(:flash, partial: "/flash_message")
     end
   end
@@ -34,7 +34,7 @@ class StudentsController < ApplicationController
     if @student.destroy
       redirect_to students_path, notice: "Student was successfully deleted."
     else
-      flash.now[:error] = @student.errors.full_messages.join('</br>')
+      flash.now[:error] = @student.errors.full_messages.join("</br>")
       render turbo_stream: turbo_stream.update(:flash, partial: "/flash_message")
     end
   end

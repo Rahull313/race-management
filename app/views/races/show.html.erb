@@ -1,0 +1,27 @@
+<h6 class="text-center">
+  <%= @race.name.titleize %>
+</h6>
+
+<% if @race.lanes.present? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Lane Number</th>
+        <th>Place</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @race.lanes.each do |lane| %>
+        <%= render 'races/lane',  lane: lane%>
+      <%end%>
+    </tbody>
+  </table>
+<% else %>
+  <p>No result found.</p>
+<% end %>
+<div class="d-flex justify-content-between">
+  <%= link_to 'Update Results', new_race_race_results_path(@race), class: 'btn btn-primary' %>
+  <%= link_to 'Go Back', races_path, class: 'btn btn-primary' %>
+</div>
+
