@@ -1,0 +1,8 @@
+<div class=" max-h-50 overflow-auto">
+  <h6 class="text-center mb-2"> <%= race_heading %> </h6>
+  <%= render @races %>
+  <div class="d-flex justify-content-center mt-4">
+    <%= link_to 'Create New Race', new_race_path, class: 'btn btn-primary' %>
+    <%= link_to 'View All Students', students_path, class: 'btn btn-info ms-2' %>
+  </div>
+</div>

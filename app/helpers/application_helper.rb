@@ -6,4 +6,8 @@ module ApplicationHelper
     when "alert" then "alert alert-primary"
     end
   end
+
+  def race_heading
+    @races.present? ? 'List of all Races' : 'No Race Found!'
+  end
 end
