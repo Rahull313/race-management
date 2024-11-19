@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "races#index"
   resources :races do
-    get 'load_lanes', on: :collection
-    resource :race_results, only: [:new, :update]  # no need for :id in the update route
+    get "load_lanes", on: :collection
+    resource :race_results, only: [ :new, :update ]  # no need for :id in the update route
   end
   resources :students
 end

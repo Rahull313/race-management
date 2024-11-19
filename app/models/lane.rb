@@ -9,6 +9,6 @@ class Lane < ApplicationRecord
   validates_associated :race
 
   def student_place
-    student&.result_in_race(race.id)&.place || 'NA'
+    student&.result_in_race(race.id)&.place || "NA"
   end
 end

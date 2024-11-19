@@ -15,8 +15,8 @@ class RacesController < ApplicationController
     if @race.save
       redirect_to @race, notice: "Race create successfully"
     else
-      flash.now[:error] = @race.errors.full_messages.join('</br>')
-      render turbo_stream: turbo_stream.update(:flash, partial: '/flash_message')
+      flash.now[:error] = @race.errors.full_messages.join("</br>")
+      render turbo_stream: turbo_stream.update(:flash, partial: "/flash_message")
     end
   end
 
@@ -26,7 +26,7 @@ class RacesController < ApplicationController
 
   def load_lanes
     render turbo_stream: [
-    turbo_stream.update("lanes_fields", partial: "races/lane_form", locals: { selected_students:get_students  }),
+    turbo_stream.update("lanes_fields", partial: "races/lane_form", locals: { selected_students: get_students  }),
     turbo_stream.update("students_checkboxes", partial: "races/students", locals: { students: nil })
   ]
   end
@@ -38,11 +38,11 @@ class RacesController < ApplicationController
   end
 
   def get_students
-    student_ids = params[:student_ids].split(',')
-    Student.where(id:student_ids)
+    student_ids = params[:student_ids].split(",")
+    Student.where(id: student_ids)
   end
 
   def race_params
-    params.require(:race).permit(:name, lanes_attributes: [:lane_number, :student_id], race_results_attributes: [:id, :student_id, :place, :_destroy])
+    params.require(:race).permit(:name, lanes_attributes: [ :lane_number, :student_id ], race_results_attributes: [ :id, :student_id, :place, :_destroy ])
   end
 end

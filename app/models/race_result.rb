@@ -25,7 +25,6 @@ class RaceResult < ApplicationRecord
   def validate_tied_places(places)
     next_position = 1
     places.tally.each do |place, count|
-
       if place != next_position
         errors.add(:place, "with ties must skip correctly after each tie. Expected #{next_position}, but found #{place}")
         break
@@ -33,12 +32,11 @@ class RaceResult < ApplicationRecord
 
       next_position = (place + count)
     end
-
   end
 
   def validate_consecutive_places(places)
     if places.sort != (1..places.size).to_a
-      errors.add(:place, 'must be consecutive with no gaps.')
+      errors.add(:place, "must be consecutive with no gaps.")
     end
   end
 end

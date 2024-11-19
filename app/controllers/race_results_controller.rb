@@ -11,8 +11,8 @@ class RaceResultsController < ApplicationController
     if @race.update(race_params)
       redirect_to race_path(@race)
     else
-      flash.now[:notice] = @race.errors.full_messages.first
-      render turbo_stream: turbo_stream.update(:flash, partial: '/flash_message')
+      flash.now[:error] = @race.errors.full_messages.join("</br>")
+      render turbo_stream: turbo_stream.update(:flash, partial: "/flash_message")
     end
   end
 
@@ -23,6 +23,6 @@ class RaceResultsController < ApplicationController
   end
 
   def race_params
-    params.require(:race).permit(race_results_attributes: [:id, :student_id, :place, :_destroy])
+    params.require(:race).permit(race_results_attributes: [ :id, :student_id, :place, :_destroy ])
   end
 end
